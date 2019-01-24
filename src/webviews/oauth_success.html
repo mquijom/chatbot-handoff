@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <meta charset="UTF-8">
+    <title>UnionBank | Login</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+</head>
+
+<body>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+    <div id="app">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="allowedMessage">
+            <div class="row">
+                <div class="col s12" style="text-align: center">
+                    <i class="large material-icons orange-text">check_circle</i>
+                </div>
+            </div>
+            <h5 class="black-text center">
+                <b>Access Allowed</b>
+            </h5>
+            <p class="black-text text-lighten-1 center">You have successfully access your account.</p>
+        </div>
+    </div>
+    <script src="./controller/oauth_success.js"></script>
+</body>
+
+</html>

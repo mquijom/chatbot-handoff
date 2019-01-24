@@ -1,0 +1,30 @@
+.box-messsage {
+    border-radius: 2px;
+    display: inline-block;
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    text-align: center;
+    align-self: stretch;
+    vertical-align: middle;
+    padding: 14px 20px;
+    margin: 8px 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.box-message-error {
+    /* background: #db2323; */
+    background-color: #f9dbdb;
+    border: 1px solid #e9b3b3;
+}
+
+.box-message-success {
+    background: #33bf33;
+    border: 1px solid #07bc07;
+}
+
+@media only screen and (max-width: 400px) {
+    body { font-size: 80%;}
+    }

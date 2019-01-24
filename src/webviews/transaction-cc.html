@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Credit Cards</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+
+        .customPhp {
+            background-color: #333333;
+            color: white;
+            padding: 1.5px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 8px;
+            vertical-align: middle;
+        }
+
+        hr.balanceHR {
+            border-top: 1px dashed #8c8b8b;
+            border-bottom: 1px dashed #fff;
+            width: 100%;
+        }
+
+        ul.collection {
+            border: 1px solid #dfdfdf;
+            border-radius: 8px;
+            box-shadow: 1px 1px #888888;
+        }
+
+        li.collection-item {
+            background: white
+        }
+
+        li.collection-item:nth-child() {
+            background: gray
+        }
+
+        sup {
+            font-weight: bold;
+            font-size: 11.5px;
+
+        }
+
+        /* .customCur {
+
+            vertical-align: middle;
+
+        } */
+    </style>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+
+</head>
+
+
+<body class="body" data-message-type="error">
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="./public/ubp_header.png" width="100%">
+        </div>
+        <div v-show="!doneLoading" class="preloader-wrapper big active cloader">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <div id="blockContent" v-show="doneLoading" class="row">
+            <div class="col s12 m6">
+                <!-- CASHBACK -->
+                <div style="margin-top: 5px;">
+                    <span style="font-weight: bold; font-size: 19px; background-color: white; padding: 0 10px; line-height: 35px;">
+                        Card Number Ending in x{{ cardNoDisplayed }}
+                    </span>
+                    <br>
+                    <span style="float: left; padding: 0 10px; color: gray;">{{ cif.name.first }} {{ cif.name.last }}</span>
+                    <br>
+                    <span style="float: left; padding: 0 10px; font-size: 10px;">
+                        <b style="color: #40b7ee">{{ cif.status }}</b>
+                    </span>
+                </div>
+
+                <!-- BALANCES -->
+                <div style="margin-top: 35px !important; margin: 11px;" v-show="cif.type !== 'S'">
+                    <div class="card darken-2">
+                        <div class="card-content black-text" style="background-color: white;">
+                            <div>
+                                <span>Outstanding Balance</span>
+                                <br>
+                                <span class="customPhp">PHP</span>
+                                <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                    convertCurrency(getBalance().OWING).split('.')[0] }}</span>
+                                <sup>.{{ convertCurrency(getBalance().OWING).split('.')[1] }}</sup>
+                            </div>
+                            <div>
+                                <br>
+                                <span>Available Balance</span>
+                                <br>
+                                <span class="customPhp">PHP</span>
+                                <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                    convertCurrency(getBalance().AVAIL).split('.')[0] }}</span>
+                                <sup>.{{ convertCurrency(getBalance().AVAIL).split('.')[1] }}</sup>
+                            </div>
+                            <br>
+                            <!-- <div>
+                                <br>
+                                <span style="font-weight: bold">Credit Limit:</span>
+                                <br>
+                                <span style="font-weight: bold; font-size: 17px">PHP {{ convertCurrency(cif.sCreditLimit) }}</span>
+                            </div> -->
+                            <hr class="balanceHR">
+                            <div>
+                                <br>
+                                <span>Minimum Amount Due</span>
+                                <br>
+                                <span class="customPhp">PHP</span>
+                                <span style="font-weight: bold; font-size: 17px; vertical-align: middle">&nbsp;{{
+                                    convertCurrency(getBalance().MINDUE) }}</span>
+                                <span style="font-size: 15px; vertical-align: middle"> due on {{
+                                    convertDate(statement_header.paymentDueDate)}} </span>
+                                </span>
+                            </div>
+                            <div>
+                                <br>
+                                <span>Last Statement Balance</span>
+                                <br>
+                                <span class="customPhp">PHP</span>
+                                <span style="font-weight: bold; font-size: 17px; vertical-align: middle">&nbsp;{{
+                                    convertCurrency(getBalance().CLOSEBAL) }}</span>
+                                <span style="font-size: 15px; vertical-align: middle"> of {{
+                                    convertDate(statement_header.statementDate)}}</span>
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRANSACTIONS -->
+                <div>
+                    <span style="font-weight: bold; font-size: 19px; background-color: white; padding: 0 10px;">
+                        Last 10 Transactions
+                    </span>
+                </div>
+                <!-- <div class="card darken-2">
+                    <div class="card-content black-text" style="padding: 10px !important;"> -->
+                <ul id="example-2" style="margin: 0;">
+                    <li v-for="item in getTransactions()">
+                        <div class="row" v-if="item.date !== ''" style="margin-bottom: 10px !important">
+                            <div class="col s12 m6">
+                                <div style="font-size: 17px">{{ convertDate(item.date)}}</div>
+                                <!-- <div class="card darken-2" style="background-color: white; margin: 2% auto !important;">
+                                            <div class="card-content black-text" style="padding: 3% !important;"> -->
+                                <ul class="collection">
+                                    <li class="collection-item" v-for="detail in item.details">
+                                        <span>{{ detail.desc }}
+                                            <br>
+                                            <span class="customPhp">PHP</span>
+                                            <span style="font-weight: bold" , "font-size: 17px; vertical-align: middle">
+                                                &nbsp;{{ convertCurrency(detail.amount) }}</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <!-- </div>
+                                        </div> -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- </div>
+                </div> -->
+            </div>
+
+            <div class="col s12">
+                <p class="black-text text-lighten-1 left" style="font-size:14px; padding: 0 10px; margin: 0;">View more
+                    details with UnionBank Online. Download it now from the
+                    <a href="https://itunes.apple.com/us/app/unionbank-online/id1242291412">App Store</a>
+                    or
+                    <a href="https://play.google.com/store/apps/details?id=com.unionbankph.online)">Google Play</a>.
+                    Try it also on the Web at
+                    <a href="online.unionbankph.com">online.unionbankph.com</a>
+                </p>
+            </div>
+
+            <div class="card-action row">
+
+                <!-- <div class="col s4" style="text-align: left">
+                    <a class="waves-effect waves-light btn orange" @click="next()"> 
+                        <i class="material-icons left"></i>View more details</a>
+                </div> -->
+                <div class="col s4" style="float: right; padding-right: 20px; padding-top: 15px;">
+                    <a class="waves-effect waves-light btn orange" @click="navigateToRatings()">
+                        <i class="material-icons right"></i>Close</a>
+                </div>
+            </div>
+        </div>
+        <!-- Err Message -->
+        <!-- <div v-show="doneLoading && showErrPage" class="row">
+            <div class="card darken-2">
+                <div class="card-content black-text">
+                    🤕 I’m currently unable to provide your balance and transaction. For immediate inquiries, your information is available through
+                    our Customer Service Hotline @ +632 841-8600.
+                </div>
+
+                <div class="card-action row">
+                    <div class="col s4" style="float: right">
+                        <a class="waves-effect waves-light btn orange" @click="goBack()">
+                            <i class="material-icons right"></i>Close</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <script src="./controller/transaction-cc.js"></script>
+</body>
+
+</html>

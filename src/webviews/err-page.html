@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>Error Page</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+
+</head>
+
+
+<body class="body" data-message-type="error">
+    <div id="app">
+        <div class="navbar-fixed" style="height: 60px !important;">
+            <nav>
+                <div class="nav-wrapper" style="background-color: rgb(242, 122, 56)">
+                    <img width="200" src="/ubp_logo">
+                    <span style="font-size:16px;vertical-align: top">| &nbsp;Error Page</span>
+                </div>
+            </nav>
+        </div>
+        <div id="blockContent" class="row">
+            <div class="col s12 m6">
+                <div style="margin-top: 20px;">
+                    <span style="font-size: 19px; background-color: white; padding: 0 10px; line-height: 35px;">
+                        <h3 style="font-weight: inherit;">Error in loading</h3>
+                    </span>
+                    <span style="float: left; padding: 0 10px;"></span>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <p class="black-text text-lighten-1 left" style="font-size:10px; padding: 0 10px">View more details
+                    with UnionBank Online. Download it now from the
+                    <a href="https://itunes.apple.com/us/app/unionbank-online/id1242291412">App Store</a>
+                    or
+                    <a href="https://play.google.com/store/apps/details?id=com.unionbankph.online)">Google Play</a>.
+                    Try it also on the Web at
+                    <a href="online.unionbankph.com">online.unionbankph.com</a>
+                </p>
+            </div>
+
+            <div class="card-action row">
+
+                <!-- <div class="col s4" style="text-align: left">
+                    <a class="waves-effect waves-light btn orange" @click="next()"> 
+                        <i class="material-icons left"></i>View more details</a>
+                </div> -->
+                <div class="col s4" style="float: right">
+                    <a class="waves-effect waves-light btn orange" @click="goBack()">
+                        <i class="material-icons right"></i>Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./controller/err-page.js"></script>
+</body>
+
+</html>

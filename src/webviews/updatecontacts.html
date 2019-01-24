@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Update Customer Contact Information</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+
+        .input-field input:focus,
+        .input-field input:focus {
+            border-bottom: 1px solid #ef6c00 ! important;
+            box-shadow: 0 1px 0 0 #ef6c00 ! important;
+            color: #ef6c00 ! important;
+        }
+
+        /* valid color */
+
+        .input-field input.valid,
+        .input-field input.valid {
+            border-bottom: 1px solid #9e9e9e ! important;
+            box-shadow: 0 1px 0 0 #9e9e9e ! important;
+        }
+
+        /* invalid color */
+
+        .input-field input.invalid,
+        .input-field input.invalid {
+            border-bottom: 1px solid #d50000 ! important;
+            box-shadow: 0 1px 0 0 #d50000 ! important;
+        }
+
+        .picker__day.picker__day--today {
+            color: #ee6e27;
+        }
+
+        .picker__date-display,
+        .picker__weekday-display {
+            background-color: #ee6d00;
+        }
+
+        div.picker__day.picker__day--infocus.picker__day--selected.picker__day--highlighted {
+            background-color: #ee6d00;
+        }
+
+        button.picker__today,
+        button.picker__close {
+            color: #ee6d00;
+        }
+
+        .picker__clear {
+            color: rgb(247, 128, 17);
+            float: left;
+        }
+
+        #radio-demo {
+            max-width: 400px;
+            margin: 94px auto 0 auto;
+        }
+
+        #radio-demo input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            -moz-opacity: 0;
+            -webkit-opacity: 0;
+            -o-opacity: 0;
+        }
+
+        #radio-demo input[type="radio"]+label {
+            position: relative;
+            padding: 0 0 0 25px;
+            font-size: 16px;
+            line-height: 25px;
+            margin: 0 0 10px 0;
+        }
+
+        #radio-demo input[type="radio"]+label:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 2px;
+            height: 14px;
+            width: 14px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.89);
+            box-shadow: inset 0px 0px 0px 2px white;
+            -webkit-box-shadow: inset 0px 0px 0px 2px white;
+            -moz-box-shadow: inset 0px 0px 0px 2px white;
+            -o-box-shadow: inset 0px 0px 0px 2px white;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -o-border-radius: 8px;
+
+        }
+
+        #radio-demo input[type="radio"]:checked+label:before {
+            background: #ef8700;
+        }
+
+        label {
+            color: black ! important;
+        }
+
+        [type="radio"]:checked+label:after,
+        [type="radio"].with-gap:checked+label:after {
+            background-color: #fa9828;
+        }
+
+        [type="radio"]:checked+label:after,
+        [type="radio"].with-gap:checked+label:before,
+        [type="radio"].with-gap:checked+label:after {
+            border: 2px solid #fa9828;
+        }
+    </style>
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            return !(charCode > 31 && (charCode < 48 || charCode > 57));
+        }
+    </script>
+</head>
+
+<body class="body">
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="./public/ubp_header.png" width="100%">
+        </div>
+
+        <div class="row" v-show="!isloading">
+            <div class="row" v-show="show_step == 1">
+                <div class="col s12 m6">
+                    <h5>
+                        <strong>Update Customer Contact Information</strong>
+                    </h5>
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <div class="row">
+                                <p>
+                                    To protect your account from unauthorized change in contact details, fill out the
+                                    following information:
+                                    <br />
+                                    <br /> Which account do you want to update?
+                                </p>
+                            </div>
+                            <div>
+                                <input type="radio" v-model="card_type" name="card_type" value="deposit" id="deposit">
+                                <label for="deposit">My UnionBank Deposit Account</label>
+                                <br />
+                                <input type="radio" v-model="card_type" name="card_type" value="creditCard" id="creditCard">
+                                <label for="creditCard">My UnionBank Credit Card Account</label>
+                            </div>
+                            <br />
+                            <div class="content">
+                                <div class="deposit">
+                                    <div class="row">
+                                        <div class="input-field col s12 m6">
+                                            <i class="material-icons prefix " style="color:#fa9828">credit_card</i>
+                                            <input class="validate" required="" id="deposit_card" type="text" min="1"
+                                                onkeypress="return isNumberKey(event)" oninput="javascript: if (this.value.length > 12) this.value = this.value.slice(0, 12);"
+                                                data-length="12" style="font-size: 20px" placeholder="0000 0000 0000">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="creditCard">
+                                    <div class="row">
+                                        <div class="input-field col s12 m6">
+                                            <i class="material-icons prefix " style="color:#fa9828">credit_card</i>
+                                            <input class="validate" required="" id="credit_card" type="text" min="1"
+                                                onkeypress="return isNumberKey(event)" oninput="javascript: if (this.value.length > 16) this.value = this.value.slice(0, 16);"
+                                                data-length="16" style="font-size: 20px" placeholder="0000 0000 0000 0000">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="recaptcha" class="g-recaptcha"></div>
+                            <span style="color: red !important;">{{ invalid_card }}</span>
+                            <br />
+                            <div class="card-action row">
+                                <div class="col s6" style="text-align: center">
+                                    <a class="waves-effect waves-light btn white orange-text" @click="cancel()">
+                                        <!-- <i class="material-icons left">close</i> -->
+                                        Exit</a>
+                                </div>
+                                <div class="col s6" style="text-align: center">
+                                    <a class="waves-effect waves-light btn orange" @click="getSecurityQuestions">
+                                        Submit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" v-show="show_step == 2">
+                <div class="col s12 m6">
+                    <h5>
+                        <strong>Update Customer Contact Information</strong>
+                    </h5>
+                    <span>Kindly enter your Account Details</span>
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <label for="code1" style="color: red">{{invalid_msg}}</label>
+                            <div class="row" v-for="q in questions">
+                                <div v-if="q.type == 'Date'">
+                                    <div v-if="q.field == 'cardExpiry'" class="input-field col s12">
+                                        <div class="col m6">{{ q.question }}</div>
+                                        <div class="col m6">
+                                            <div class="row">
+                                                <div class="col s6">
+                                                    <input class="validate" required="" id="expDate" type="number" min="0"
+                                                        onkeypress="return isNumberKey(event)" oninput="javascript: if (this.value.length > 4) this.value = this.value.slice(0, 4);"
+                                                        @keyup="validateYY" data-length="2" v-model="expiry_yy" style="text-align:center;font-size: 20px"
+                                                        placeholder="yy">
+                                                </div>
+                                                <div class="col s6">
+                                                    <input class="validate" required="" id="expDate" type="number" min="1"
+                                                        max="12" onkeypress="return isNumberKey(event)" oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);"
+                                                        @keyup="validateMM" data-length="2" v-model="expiry_mm" style="text-align:center;font-size: 20px"
+                                                        placeholder="mm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div v-if="q.field != 'cardExpiry'" class="input-field col s12">
+                                        <input v-model="answers[q.index].value" type="text" class="datepicker">
+                                        <label>{{ q.question }}</label>
+                                    </div>
+                                </div>
+                                <div v-if="q.type == 'Boolean'">
+                                    <div class="col m6">{{ q.question }}</div>
+                                    <div class="col m6">
+                                        <div class="row">
+                                            <div class="col s6">
+                                                <input type="radio" id="withdrawal_yes" value="true" v-model="answers[q.index].value">
+                                                <label for="withdrawal_yes">Yes</label>
+                                            </div>
+                                            <div class="col s6">
+                                                <input type="radio" id="withdrawal_no" value="false" v-model="answers[q.index].value">
+                                                <label for="withdrawal_no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="q.type == 'Double'" class="input-field col s12">
+                                    <input v-model="answers[q.index].value" type="text" class="validate">
+                                    <label>{{ q.question }}</label>
+                                </div>
+                                <div v-if="q.type == 'String'" class="input-field col s12">
+                                    <input v-model="answers[q.index].value" type="text" class="validate">
+                                    <label>{{ q.question }}</label>
+                                </div>
+                            </div>
+                            <span style="color: red !important" v-for="msg in error_msg">{{ msg.message }}
+                                <br>
+                            </span>
+                            <div class="card-action row">
+                                <div class="col s6" style="text-align: left">
+                                    <a class="waves-effect waves-light btn white orange-text" @click="show_step = 1">
+                                        <!-- <i class="material-icons left">close</i> -->
+                                        Back</a>
+                                </div>
+                                <div class="col s6" style="text-align: right">
+                                    <a class="waves-effect waves-light btn orange" @click="validateInformation">
+                                        <!-- <i class="material-icons left">arrow_forward</i> -->
+                                        Submit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" v-show="show_step == 3">
+                <div class="col s12 m6">
+                    <h5>
+                        <strong>Update Customer Contact Information</strong>
+                    </h5>
+                    <span>Kindly enter your Mobile number and Email Address</span>
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <label for="code1" style="color: red">{{error_msg_contacts}}</label>
+                            </span>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input disabled v-model="old.mobile" name="mobile1" id="disabled" type="text" class="validate"
+                                        required="" aria-required="true">
+                                    <label for="disabled" :data-error="err_msg_mobile1">Old Mobile Number</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input class="validate" required="" id="mobile" type="number" min="1" onkeypress="return isNumberKey(event)"
+                                        oninput="javascript: if (this.value.length > 12) this.value = this.value.slice(0, 12);"
+                                        data-length="12" style="font-size: 20px" v-model="contacts.mobile" placeholder="Ex. 639170000000">
+                                    <label style="color: black" for="mobile">New Mobile Number</label>
+                                </div>
+                                <div class="col s12">
+                                    <span style="color: red !important">{{ invalid_mobile }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input disabled v-model="old.email" name="email1" id="disabled" type="text" class="validate"
+                                        required="" aria-required="true">
+                                    <label for="disabled" :data-error="err_msg_email1">Old Email</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input class="validate" required="" id="email" type="text" style="font-size: 20px"
+                                        v-model="contacts.email">
+                                    <label style="color: black" for="email">New Email Address</label>
+                                </div>
+                                <div class="col s12">
+                                    <span style="color: red !important">{{ invalid_email }}</span>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <p>
+                                    <span style="padding: 3px 5px; font-size: 9px; font-weight: bold; border: 1px solid orange; border-radius: 5px; background-color: orange; color: white;">NOTE</span> We will send OTP Code to your mobile number to update the details. We will
+                                    also send OTP/notification via e-mail. if e-mail add is updated, notify old and new e-mail.
+                                    if mobile number is updated only, notify current e-mail.
+                                </p>
+                            </div> -->
+                            <br />
+                            <div class="card-action row">
+                                <div class="col s6" style="text-align: left">
+                                    <a class="waves-effect waves-light btn white orange-text" @click="show_step = 2">
+                                        Back</a>
+                                </div>
+                                <div class="col s6" style="text-align: right">
+                                    <a class="waves-effect waves-light btn orange" @click="sendOTP">
+                                        Submit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" v-show="show_step == 4">
+                <div class="col s12 m6">
+                    <h5>
+                        <strong>OTP</strong>
+                    </h5>
+                    <span>Kindly enter the One-Time Password(OTP) sent to your registered mobile number
+                    </span>
+                    <div class="card darken-1">
+                        <div class="card-content">
+                            <label for="" style="color: red !important">{{error_otp_msg}}</label>
+
+                            <div class="row">
+
+                                <div class="input-field col s6">
+                                    <input class="validate" required="" id="otp" type="number" v-model="otp_code" style="font-size: 20px">
+                                    <label for="code1" style="color: black">OTP</label>
+                                </div>
+                                <div class="input-field col s6" style="text-align: left">
+                                    <a class="waves-effect waves-light btn orange" v-on:click="updateContacts">
+                                        Next
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" row card-action">
+
+                            <div class="col s12">
+                                <span>To update your registered number kindly call our Customer Service Hotline at +63
+                                    2 841-8600</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" v-show="show_step == 5">
+                <div class="col s12 m6">
+                    <div class="card darken-1">
+                        <div class="card-content">
+
+                            <div class="row">
+                                <div class="col s12" style="text-align: center">
+                                    <i class="large material-icons orange-text">check_circle</i>
+                                </div>
+                                <div class="col s12" style="text-align: center">
+                                    <h4>
+                                        <strong>Great !</strong>
+                                    </h4>
+                                </div>
+                                <div class="col s12" style="text-align: center">
+                                    We received your Update Contacts request. This request will apply after 2 banking
+                                    days. Thank you 👍
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" row card-action" style="text-align: center">
+                            <a class="waves-effect waves-light btn orange" @click="cancel()">
+                                Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- LOADING -->
+        <div v-show="isloading" class="preloader-wrapper big active cloader" style="text-align: center">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./controller/updatecontacts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <meta charset="UTF-8">
+    <title>UnionBank | Casa Transactions</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+
+        .customPhp {
+            background-color: black;
+            color: white;
+            padding: 2px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .card {
+            border-radius: 3px !important;
+        }
+
+        .card-content {
+            padding: 10px !important;
+        }
+
+        /* .customCur {
+
+                vertical-align: middle;
+
+            } */
+    </style>
+
+
+</head>
+
+<body class="body" data-message-type="error">
+    <div id="app">
+        <div class="navbar-fixed">
+            <img src="./public/ubp_header.png" style="width:100%">
+        </div>
+        <div v-show="isloading" class="preloader-wrapper big active cloader">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <div v-show="!isloading">
+            <!-- CASHBACK -->
+            <div class="row">
+                <div class="col s12 m12">
+                    <span style="font-weight: bold; font-size: 19px; background-color: white; padding: 0 10px; line-height: 35px;">
+                        Card Number Ending in x{{ cardNoDisplayed }}
+                    </span>
+                    <br>
+                    <span style="float: left; padding: 0 10px; color: gray;">{{ account_name }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- BALANCES -->
+                <div class="col s12 m12">
+                    <div class="card darken-2">
+                        <div class="card-content">
+                            <table class="striped">
+                                <tr>
+                                    <td>Account Balance</td>
+                                    <td>
+                                        <span class="customPhp">PHP</span>
+                                        <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                            convertCurrency(balance.EFFAVL).split('.')[0] }}</span>
+                                        <sup>.{{ convertCurrency(balance.EFFAVL).split('.')[1] }}</sup>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Available Balance</td>
+                                    <td>
+                                        <span class="customPhp">PHP</span>
+                                        <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                            convertCurrency(balance.EFFAVL).split('.')[0] }}</span>
+                                        <sup>.{{ convertCurrency(balance.EFFAVL).split('.')[1] }}</sup>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Current Balance</td>
+                                    <td>
+                                        <span class="customPhp">PHP</span>
+                                        <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                            convertCurrency(LEDGER).split('.')[0] }}</span>
+                                        <sup>.{{ convertCurrency(LEDGER).split('.')[1] }}</sup>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Funds in Clearing</td>
+                                    <td>
+                                        <span class="customPhp">PHP</span>
+                                        <span style="font-weight: bold; font-size: 25px; vertical-align: middle">&nbsp;{{
+                                            convertCurrency(balance.FUTBAL).split('.')[0] }}</span>
+                                        <sup>.{{ convertCurrency(balance.FUTBAL).split('.')[1] }}</sup>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 0px !important">
+                <div class="col s12 m12">
+                    <h5>
+                        <strong>Transactions History</strong>
+                    </h5>
+                    <div class="row" v-for="transaction in transactions">
+                        <div class="center">
+                            <p>{{ convertDate(transaction.date) }}</p>
+                        </div>
+                        <div class="card darken-1" v-for="trans in transaction.details">
+                            <div class="card-content">
+                                <div class="row" style="margin-bottom: 0 !important;">
+                                    <div class="col s5" style="font-size: 20px;">
+                                        <b>{{ trans.cat }}</b>
+                                    </div>
+                                    <div class="col s7">
+                                        <span class="customPhp">{{ trans.currency }}</span>
+                                        <span style="font-weight: bold; font-size: 20px; vertical-align: middle">&nbsp;{{
+                                            convertCurrency(trans.amount).split('.')[0] }}</span>
+                                        <sup>.{{ convertCurrency(trans.amount).split('.')[1] }}</sup>
+                                        <br /> REF: {{ trans.id }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row card-action" style="text-align: right">
+                <a class="waves-effect waves-light btn orange white-text" @click="exit()">
+                    <i class="material-icons right">close</i>Close</a>
+            </div>
+        </div>
+    </div>
+    <script src="./controller/casa-transactions.js"></script>
+</body>
+
+</html>

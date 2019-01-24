@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Application Status</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            background: white;
+            font-family: sans-serif;
+            font-size: 10px
+        }
+
+        .cloader {
+            position: absolute;
+            top: 45%;
+            left: 45%;
+        }
+
+        .btn-flat {
+            box-shadow: none;
+            background-color: #4444444f;
+            color: #343434;
+            cursor: pointer;
+            transition: background-color .2s;
+        }
+
+        h5 {
+            font-size: 1.64rem;
+            line-height: 50%;
+            margin: .82rem 0 .656rem 0;
+        }
+
+        .dropdown-content li>span {
+            font-size: 16px;
+            color: rgb(247, 128, 17);
+            display: block;
+            line-height: 22px;
+            padding: 14px 16px;
+        }
+
+        label {
+            color: black ! important;
+        }
+
+        .input-field input:focus,
+        .input-field input:focus {
+            border-bottom: 1px solid #ef6c00 ! important;
+            box-shadow: 0 1px 0 0 #ef6c00 ! important;
+            color: #ef6c00 ! important;
+        }
+
+        /* valid color */
+
+        .input-field input.valid,
+        .input-field input.valid {
+            border-bottom: 1px solid #9e9e9e ! important;
+            box-shadow: 0 1px 0 0 #9e9e9e ! important;
+        }
+
+        /* invalid color */
+
+        .input-field input.invalid,
+        .input-field input.invalid {
+            border-bottom: 1px solid #d50000 ! important;
+            box-shadow: 0 1px 0 0 #d50000 ! important;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="/public/ubp_header.png" width="100%">
+        </div>
+        <div class="row" v-show="!isloading">
+            <div class="col s12 m6">
+                <div class="row">
+                    <h5>
+                        <strong>Application Status</strong>
+                    </h5>
+                </div>
+                <div class="card darken-1 row">
+                    <div class="card-content row">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" required="" @keyup.13="checkStatus" id="name" type="text" style="font-size: 20px"
+                                    placeholder="" v-model="reference_no">
+                                <label for="name">Enter Reference Number</label>
+                            </div>
+                        </div>
+                        <div class="row" v-show="success_msg !== '' || invalid_msg !== ''">
+                            Status:
+                            <span style="color: #40b7ee ! important;">{{ success_msg }}</span>
+                            <span style="color: red ! important;">{{ invalid_msg }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action" style="text-align: right">
+                    <a class="waves-effect waves-light btn white orange-text" @click="cancel">
+                        Exit</a>
+                    <a class="waves-effect waves-light btn orange" @click="checkStatus">
+                        Check</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOADING -->
+        <div v-show="isloading" class="preloader-wrapper big active cloader" style="text-align: center">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/controller/application-status.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Five Star Ratings</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+    <!-- rating -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+    <!--  -->
+    <style>
+        /* body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+
+        label {
+            color: black ! important;
+        }
+
+        .input-field input:focus,
+        .input-field input:focus {
+            border-bottom: 1px solid #ef6c00 ! important;
+            box-shadow: 0 1px 0 0 #ef6c00 ! important;
+            color: #ef6c00 ! important;
+        } */
+
+        /* valid color */
+
+        /* .input-field input.valid,
+        .input-field input.valid {
+            border-bottom: 1px solid #9e9e9e ! important;
+            box-shadow: 0 1px 0 0 #9e9e9e ! important;
+        } */
+
+        /* invalid color */
+
+        /* .input-field input.invalid,
+        .input-field input.invalid {
+            border-bottom: 1px solid #d50000 ! important;
+            box-shadow: 0 1px 0 0 #d50000 ! important;
+        }
+
+        .collection.with-header .collection-header,
+        .collection.with-header .collection-item {
+            text-align: center;
+        } */
+
+
+        /* rating */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            font-size: 20px;
+        }
+
+        .container {
+            width: 1170px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5em;
+            color: #9e9ba4;
+            text-transform: capitalize;
+            margin-bottom: 50px;
+        }
+
+        h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: black;
+            text-transform: capitalize;
+            margin-bottom: 50px;
+        }
+
+        input[type="checkbox"] {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        label {
+            position: relative;
+            width: 70px;
+            height: 50px;
+            display: table-cell;
+            table-layout: center;
+        }
+
+        .check::before,
+        .rated::after {
+            content: '\2605';
+            font-size: 60px;
+            position: absolute;
+            color: #777;
+            left: 0;
+            bottom: 0;
+            line-height: 50px;
+        }
+
+        .rated::after {
+            color: orange;
+        }
+
+        .check:hover::before {
+            color: orange;
+        }
+
+        label i {
+            position: absolute;
+
+            font-size: 35px;
+        }
+
+        label i.em {
+            display: none;
+        }
+
+        .card .card-content .card-title {
+            display: block;
+            line-height: 32px;
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+
+        i.large {
+            font-size: -webkit-xxx-large;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="./public/ubp_header.png" width="100%">
+        </div>
+        <!-- rating -->
+        <div class="row" v-show="!show_step2">
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <span class="card-title" style="text-align: center;">How'd you like your
+                            experience?😊</span>
+                        <br>
+                        <div class="col s12" style="text-align: center">
+                            <i class="large material-icons" v-for="i in rate" @click="selectRate(i, 0)" style="color:orange">grade</i>
+                            <i class="large material-icons" v-for="i in (5 - rate)" @click="selectRate(i, 1)" style="color:orange">star_border</i>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="black-text text-lighten-1 left" style="font-size:11px; padding: 0 10px; margin: 0; text-align: center;">Check
+                            your card balance anytime,anywhere with the UnionBank Online App. Learn more</a>
+                            <a href="https://www.unionbankph.com/online/view-balances">here</a>
+                            or download the App for free at the
+                            <a href="http://apple.co/2v0TAnU">App Store</a> or <a href="http://bit.ly/2w9Jaal">Google
+                                Play</a>.
+                        </p>
+                        <br>
+                        <br>
+                        <br>
+
+                        <div class="card-action" style="text-align: center">
+                            <a class="waves-effect waves-light btn orange" @click="submit()">Submit</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thank you -->
+        <div class="row" v-show="show_step2">
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col s12" style="text-align: center; font-size: 22px;">
+                                <h4>
+                                    <strong>Thank you for your rating! 👍</strong>
+                                </h4>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- <div class=" row card-action" style="text-align: center">
+                        <a class="waves-effect waves-light btn orange" v-on:click="exit()">
+                            Close</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./controller/ratings.js"></script>
+
+</html>

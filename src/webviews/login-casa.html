@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Casa Balance</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+
+        .input-field input:focus {
+            border-bottom: 1px solid #ef6c00 ! important;
+            box-shadow: 0 1px 0 0 #ef6c00 ! important;
+            color: #ef6c00 ! important;
+        }
+
+        /* valid color */
+
+        .input-field input.valid {
+            border-bottom: 1px solid #ef6c00 ! important;
+            box-shadow: 0 1px 0 0 #ef6c00 ! important;
+        }
+
+        /* invalid color */
+
+        .input-field input.invalid {
+            border-bottom: 1px solid #d50000 ! important;
+            box-shadow: 0 1px 0 0 #d50000 ! important;
+        }
+    </style>
+    <script>
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            return !(charCode > 31 && (charCode < 48 || charCode > 57));
+        }
+    </script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+
+        // Register a global custom directive called `v-focus`
+        Vue.directive('focus', {
+            // When the bound element is inserted into the DOM...
+            inserted: function (el) {
+                // Focus the element
+                el.focus()
+            }
+        });
+    </script>
+</head>
+
+
+<body class="body" data-message-type="error">
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="./public/ubp_header.png" width="100%">
+        </div>
+
+        <!-- Form -->
+        <div class="row" v-show="!show_step2  && !isloading">
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <span class="card-title">Enter Account Number</span>
+                        <p class="black-text text-lighten-1 left" style="font-size:14px;">Kindly enter your UnionBank
+                            Account Number.</p>
+                        <br>
+                        <label for="code1" style="color: red">{{invalid_msg}}</label>
+                        <label v-show="invalid_mobile_number" style="color: red">
+                            Kindly reach out to our Customer Service team at
+                            <a href="mailto:customer.service@unionbankph.com">customer.service@unionbankph.com</a> or
+                            +632 841-8600 to get your balances.
+                        </label>
+                        <div class="row" style="margin-bottom: 0 !important;">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix" style="color:#fa9828">credit_card</i>
+                                <input id="casa" required="" type="number" style="font-size:20px" v-model="account_number"
+                                    class="validate" placeholder="0000 0000 0000">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action" style="text-align: right">
+                        <a class="waves-effect waves-light btn orange" :disabled="showCardActivation" @click="next()">Next</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-show="isloading" class="preloader-wrapper big active cloader">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTP -->
+        <div class="row" v-show="show_step2 && !isloading">
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <span class="card-title">Enter One-Time Password (OTP)</span>
+                        <p class="black-text text-lighten-1 left" style="font-size:14px;">Kindly enter the One-Time
+                            Password (OTP) sent to your registered mobile number.</p>
+                        <br>
+                        <label for="code1" style="color: red">{{invalid_msg}}</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix" style="color:#fa9828">screen_lock_portrait</i>
+                                <input id="code1" required="" style="text-align: center; font-size:20px" class="validate"
+                                    maxlength="6" type="number" v-model="otp" placeholder="000000">
+                            </div>
+
+                            <div class="card-action; col s6" style="text-align: left; padding: 20px">
+                                <a class="waves-effect waves-light btn orange" v-on:click="verify()">Submit</a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./controller/initialize_controller.js"></script>
+    <script src="./controller/login-casa.js"></script>
+</body>
+
+</html>

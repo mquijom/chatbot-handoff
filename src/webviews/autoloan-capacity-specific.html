@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Autoloan</title>
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="/public/css/bootstrap.min.js"></script>
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            animate: 0.2s;
+            box-shadow: 0px 0px 0px #000000;
+            background: #fa9828;
+            border-radius: 3px;
+            border: 0px solid #000000;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            box-shadow: 0px 0px 0px #000000;
+            border: 1px solid #fa9828;
+            height: 30px;
+            width: 30px;
+            border-radius: 40px;
+            background: #FFFAFA;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -10px;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #fa9828;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            animate: 0.2s;
+            box-shadow: 0px 0px 0px #000000;
+            background: #fa9828;
+            border-radius: 3px;
+            border: 0px solid #000000;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            box-shadow: 0px 0px 0px #000000;
+            border: 1px solid #fa9828;
+            height: 18px;
+            width: 18px;
+            border-radius: 25px;
+            background: #FFFAFA;
+            cursor: pointer;
+        }
+
+        input[type=range]::-ms-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
+
+        input[type=range]::-ms-fill-lower {
+            background: #fa9828;
+            border: 0px solid #fa9828;
+            border-radius: 6px;
+            box-shadow: 0px 0px 0px #fa9828;
+        }
+
+        input[type=range]::-ms-fill-upper {
+            background: #fa9828;
+            border: 0px solid #000000;
+            border-radius: 6px;
+            box-shadow: 0px 0px 0px #000000;
+        }
+
+        input[type=range]::-ms-thumb {
+            box-shadow: 0px 0px 0px #000000;
+            border: 1px solid #fa9828;
+            height: 18px;
+            width: 18px;
+            border-radius: 25px;
+            background: #FFFAFA;
+            cursor: pointer;
+        }
+
+        input[type=range]:focus::-ms-fill-lower {
+            background: #fa9828;
+        }
+
+        input[type=range]:focus::-ms-fill-upper {
+            background: #fa9828;
+        }
+
+        .btn.focus,
+        .btn:focus,
+        .btn:hover {
+            color: #fa9828 ! important;
+            text-decoration: none;
+        }
+
+        .button-variant {
+            color: #fff;
+            background-color: #fa9828 ! important;
+            border-color: #fa9828 ! important;
+        }
+
+        .btn-primary.focus,
+        .btn-primary:focus {
+            color: #fff;
+            background-color: #fa9828 ! important;
+            border-color: #fa9828 ! important;
+        }
+
+        .btn.focus,
+        .btn:focus,
+        .btn:hover {
+            color: #fa9828 ! important;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #fa9828 ! important;
+            border-color: #fa9828 ! important;
+        }
+
+        .label-primary {
+            background-color: #fa9828 ! important;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #fa9828 ! important;
+            border-color: #fa9828 ! important;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #fa9828 ! important;
+            border-color: #fa9828 ! important;
+        }
+
+        .glyphicon-refresh-animate {
+            animation-name: rotateThis;
+            -webkit-animation-name: rotateThis;
+            animation-duration: 2s;
+            -webkit-animation-duration: 2s;
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+        }
+
+        @keyframes rotateThis {
+            from {
+                -webkit-transform: rotate( 0deg);
+            }
+            to {
+                -webkit-transform: rotate( 360deg);
+            }
+        }
+
+        @-webkit-keyframes rotateThis {
+            from {
+                -webkit-transform: rotate( 0deg);
+            }
+            to {
+                -webkit-transform: rotate( 360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+    <div id="app" class="container">
+
+        <div style="margin-top: 10px">
+            <label class="control-label">Fill-in the Income, Car & Payment information</label>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: 10px">
+            <div class="col-xs-4" style="width: 50px; height: 50px; margin-top: 10px">
+                <span class="label label-primary" style="font-size: 20px;border-radius: 1em;">1</span>
+            </div>
+            <div class="col-xs-8">
+                <label class="control-label">Monthly Income</label>
+                <div>
+                    <input type="range" min="10000" max="1000000" step="1000" name="display" id="display" v-on:input="computePrice" v-model="monthly_income"
+                        style="width:250px" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: -5px;width: 350px">
+            <label class="control-label" style="padding-left: 70px">Monthly Income (PHP):</label>
+            <label class="control-label" style="padding-left: 5px;color: gray">{{income_price}}</label>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: 10px" v-if="show_dp">
+            <div class="col-xs-4" style="width: 50px; height: 50px; margin-top: 10px">
+                <span class="label label-primary" style="font-size: 20px;border-radius: 1em;">2</span>
+            </div>
+            <div class="col-xs-8">
+                <label class="control-label">Downpayment</label>
+                <div>
+                    <input type="range" min="50000" max="1000000" step="1000" name="display" id="display" v-on:input="computePrice" v-model="downpayment_amount"
+                        style="width:250px" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: -5px;width: 350px" v-if="show_dp">
+            <label class="control-label" style="padding-left: 70px">Downpayment (PHP):</label>
+            <label class="control-label" style="padding-left: 5px;color: gray">{{downpayment_price}}</label>
+        </div>
+
+        <div id="term_div_1" class="form-group col-xs-12" v-if="show_terms" style="margin-top: 10px">
+            <div class="col-xs-2" style="width: 50px; height: 50px; margin-top: 10px">
+                <span class="label label-primary" style="font-size: 20px;border-radius: 1em;">3</span>
+            </div>
+            <div id="term_div_2" class="col-xs-9">
+                <label class="control-label">Loan Terms (in months)</label>
+                <div>
+                    <div id="term_btn_grp" class="btn-group" style="width: 250px" role="group1">
+                        <button id="term_btn_60" type="button" class="btn btn-default" style="width: 50px" v-on:click="setLoanTerms(60)" v-bind:class="{active: active_term_btn1}">60</button>
+                        <button id="term_btn_48" type="button" class="btn btn-default" style="width: 50px" v-on:click="setLoanTerms(48)" v-bind:class="{active: active_term_btn2}">48</button>
+                        <button id="term_btn_36" type="button" class="btn btn-default" style="width: 50px" v-on:click="setLoanTerms(36)" v-bind:class="{active: active_term_btn3}">36</button>
+                        <button id="term_btn_24" type="button" class="btn btn-default" style="width: 50px" v-on:click="setLoanTerms(24)" v-bind:class="{active: active_term_btn4}">24</button>
+                        <button id="term_btn_12" type="button" class="btn btn-default" style="width: 50px" v-on:click="setLoanTerms(12)" v-bind:class="{active: active_term_btn5}">12</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: 20px;width: 350px" v-if="is_loading">
+            <label class="control-label" style="padding-left: 175px"></label>
+            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+        </div>
+
+        <div class="form-group col-xs-12" v-if="show_brand" style="margin-top: 10px">
+            <div class="col-xs-4" style="width: 50px; height: 50px; margin-top: 10px">
+                <span class="label label-primary" style="font-size: 20px;border-radius: 1em;">4</span>
+            </div>
+            <div class="col-xs-8">
+                <label class="control-label">Car Brand</label>
+                <div>
+
+                    <select class="form-control" v-model="car_brand" style="width: 250px" v-on:change="getModels()">
+                        <option value="">Select car brand</option>
+                        <option v-for="brand in carBrandList">{{ brand }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: 20px;width: 350px" v-if="is_loading_model">
+            <label class="control-label" style="padding-left: 175px"></label>
+            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+        </div>
+
+        <div class="form-group col-xs-12" v-if="show_carmodels" style="margin-top: 10px">
+            <div class="col-xs-4" style="width: 50px; height: 50px; margin-top: 10px">
+                <span class="label label-primary" style="font-size: 20px;border-radius: 1em;">5</span>
+            </div>
+            <div class="col-xs-8">
+                <label class="control-label">Car Model</label>
+                <div>
+                    <select class="form-control" style="width: 250px" v-model="car_model">
+                        <option value="">Select car model</option>
+                        <option v-for="model in carModelList" v-bind:value="model">{{ model.model }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12" style="margin-top: -5px;width: 350px" v-if="show_carmodels">
+            <label class="control-label" style="padding-left: 70px">Car Price (PHP):</label>
+            <label class="control-label" style="padding-left: 5px;color: gray">{{car_price}}</label>
+        </div>
+
+        <div class="form-group col-xs-12" v-if="show_no_cars_found">
+            <label class="control-label col-md-4">
+                Sorry, no cars found within that price range.
+            </label>
+        </div>
+        <div class="form-group col-xs-12" style="margin-top: 30px" v-if="show_next">
+            <div>
+                <button class="btn btn-primary" style="width:300px" v-on:click="submit()">Next</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="./controller/initialize_controller.js"></script>
+    <script src="./controller/autoloan-capacity-specific.js"></script>
+
+</body>
+
+</html>

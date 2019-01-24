@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Bills Payment</title>
+    <meta charset="UTF-8">
+    <link href="https://www.unionbankph.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cloader {
+            position: absolute;
+            top: 50%;
+            left: 43%;
+        }
+    </style>
+
+
+</head>
+
+<body class="body">
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+    <div id="app">
+        <div class="nav-wrapper">
+            <img src="./public/Login.jpg" width="100%">
+        </div>
+        <div class="row">
+            <div class="col s12 m3"></div>
+            <div class="col s12 m6">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <span class="card-title"><b>Step 1</b> - Select an Account </span>
+                        <div v-for="casa in casa_accounts" class="card darken-1">
+                            <a href="#!" @click="proceed(casa)" style="color:black">
+                                <div class="card-content">
+                                    <p>{{ casa.account.desc }}
+                                        <br/> {{ casa.account.number }}
+                                    </p>
+                                    <h6>Account Balance
+                                        <br/>
+                                        <span class="customPhp">{{ casa.currency }}</span>
+                                        <span style="font-weight: bold;">&nbsp; {{ convertCurrency(casa.balance) }}</span>
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3"></div>
+        </div>
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-floating btn-large orange darken-1">
+                <i class="large material-icons">link</i>
+            </a>
+            <ul>
+                <li class="waves-effect waves-light">
+                    <a @click="viewTransaction()">
+                        <i class="material-icons">history</i>
+                        <span class="white-text email">View Transactions</span>
+                    </a>
+                </li>
+                <li class="waves-effect waves-light">
+                    <a @click="myAccount()">
+                        <i class="material-icons">account_circle</i>
+                        <span class="white-text email">My Account</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./controller/accountlist-cardless.js"></script>
+</body>
+
+</html>

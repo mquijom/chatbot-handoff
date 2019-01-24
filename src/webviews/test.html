@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.2.6/jquery.inputmask.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#currency2").inputmask({ alias: "currency", prefix: '₱ ' });
+        });
+    </script>
+</head>
+
+<body>
+    <label>REMOVE CURRENCY SYMBOL</label>
+    <br>
+    <input type="text" id="currency1" />
+    <br>
+
+    <label>CHANGE THE CURRENCY SYMBOL</label>
+    <br>
+    <input type="text" id="currency2" />
+    <br>
+
+    <label>CHANGE THE CURRENCY SYMBOL, using an alias</label>
+    <br>
+    <input type="text" id="currency3" />
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v4.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web Maker Description">
+    <title>UnionBank | Credit Cards</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/public/css/materialize.min.js"></script>
+
+
+    <script src="/public/resources/js/vue.js"></script>
+    <script src="/public/resources/js/vue-resource.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+    </script>
+
+</head>
+
+
+<body class="body" data-message-type="error">
+    <div id="app">
+        <!-- <div class="navbar-fixed" style="height: 60px !important;">
+            <nav>
+                <div class="nav-wrapper" style="background-color: rgb(242, 122, 56)">
+                    <img width="100%" src="./public/ubp_header.png">
+                    <span style="font-size:16px;vertical-align: top">| &nbsp;Credit Cards</span>
+                </div>
+            </nav>
+        </div> -->
+        <div class="nav-wrapper">
+            <img src="./public/ubp_header.png" width="100%">
+        </div>
+        <!-- Err Message -->
+        <div class="row">
+            <div class="card darken-2">
+                <div class="card-content black-text" style="text-align: center; font-size: 18px;">
+                    <br>
+                    <br>
+                    🤕 I’m currently unable to provide your balance and transaction. For immediate inquiries, your
+                    information is available through
+                    our Customer Service Hotline @ +632 841-8600.
+                </div>
+
+                <div class="card-action row">
+                    <div class="col s4" style="float: right">
+                        <a class="waves-effect waves-light btn orange" @click="navigateToRatings()">
+                            <i class="material-icons right"></i>Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./controller/system-maintenance.js"></script>
+</body>
+
+</html>
